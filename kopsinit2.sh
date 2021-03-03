@@ -53,5 +53,5 @@ kops validate cluster --wait 10m
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 
 #Export master url to the bucket
-kubectl cluster-info | grep 'Kubernetes master is running at ' | cut -d" " -f 6 > MasterUrl.html
+kubectl cluster-info | grep "control plane.*" | cut -d" " -f7 > masterurl.html
 aws s3 cp MaterUrl.html s3://${bucket}/MasterUrl.html
